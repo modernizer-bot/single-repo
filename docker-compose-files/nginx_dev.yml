@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+
+  nginx:
+    image: nginx:1.19.10-alpine
+    restart: always
+    network_mode: host
+    volumes:
+      - nginx_data:/etc/nginx
+
+volumes:
+  nginx_data: {}

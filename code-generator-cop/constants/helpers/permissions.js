@@ -1,0 +1,14 @@
+const permissions = `const PERMISSIONS = {
+  BASIC: 1,
+  USER_MANAGEMENT: 10001,
+  AUTHORIZATION_MANAGEMENT: 10002,
+  UNKKNOWABLE: 20001,
+  SPRREVIEW: 10003,
+  CREATION: 10004,
+  ROI_MANAGEMENT: 10005
+};
+
+module.exports = PERMISSIONS;
+`;
+
+module.exports = permissions;

@@ -1,0 +1,22 @@
+{
+  "name": "cdtsf",
+  "version": "1.0.0",
+  "description": "\"d.ts\" File Example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@types/react": "^17.0.21",
+    "@types/react-router-dom": "^5.1.9",
+    "express": "^4.17.1",
+    "react": "^17.0.2"
+  }
+}

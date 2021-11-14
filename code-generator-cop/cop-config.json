@@ -1,0 +1,213 @@
+{
+  "options": {
+    "serviceUrl": "http://localhost:5863",
+    "paths": {
+      "services": "cop/server/services",
+      "controllers": "cop/server/controllers",
+      "routers": "cop/server/routers",
+      "helpers": "cop/server/helpers",
+      "apis": "cop/client/apis"
+    },
+    "createHelpers": true,
+    "createServices": true,
+    "createControllers": true,
+    "createRouters": true,
+    "createApis": true
+  },
+  "entities": [
+    {
+      "name": "t_sys_user",
+      "type": "table",
+      "authentication": true,
+      "authorization": true,
+      "permission": [
+        "BASIC",
+        "ROI_MANAGEMENT"
+      ],
+      "logger": true,
+      "rest": true,
+      "insert": true,
+      "selectBy": [
+        "All##true##*##",
+        "##false##*##idx@@=,username@@=,extended_name@@ILIKE"
+      ],
+      "updateBy": [
+        "idx@@=,username@@=,extended_name@@ILIKE"
+      ],
+      "deleteBy": [
+        "idx@@=,username@@=,extended_name@@ILIKE"
+      ]
+    },
+    {
+      "name": "v_sys_user_info",
+      "type": "view",
+      "schema": "public",
+      "permission": [
+        "BASIC"
+      ],
+      "authentication": true,
+      "authorization": true,
+      "rest": true,
+      "logger": true,
+      "selectBy": [
+        "All##false##username,extended_name##",
+        "##true##*##idx@@=,username@@=,extended_name@@ILIKE"
+      ]
+    },
+    {
+      "name": "v_sys_role_user",
+      "type": "view",
+      "permission": [
+        "BASIC"
+      ],
+      "authentication": false,
+      "authorization": false,
+      "rest": false,
+      "logger": true,
+      "selectBy": [
+        "All##false##*##",
+        "##true##*##idx@@=,username@@=,extended_name@@ILIKE"
+      ]
+    },
+    {
+      "name": "sp_sys_add_user",
+      "type": "sp",
+      "permission": [
+        "BASIC"
+      ],
+      "authentication": false,
+      "authorization": false,
+      "rest": false,
+      "logger": false,
+      "call": false,
+      "parameters": [
+        "p_department_idx",
+        "p_user_name",
+        "p_first_name",
+        "p_last_name",
+        "p_id",
+        "p_password",
+        "p_password_verify",
+        "p_other_id",
+        "p_user_directory_idx"
+      ]
+    },
+    {
+      "name": "sp_check_user_permission",
+      "type": "sp",
+      "permission": [
+        "BASIC"
+      ],
+      "authentication": false,
+      "authorization": false,
+      "rest": false,
+      "logger": false,
+      "call": false,
+      "parameters": [
+        "p_user_idx",
+        "p_permission_attribute"
+      ]
+    },
+    {
+      "name": "sp_sys_log_create",
+      "type": "sp",
+      "permission": [
+        "BASIC"
+      ],
+      "authentication": false,
+      "authorization": false,
+      "rest": false,
+      "logger": false,
+      "call": false,
+      "parameters": [
+        "p_user_idx",
+        "p_object_class_idx",
+        "p_method",
+        "p_url",
+        "p_object_idx",
+        "p_message"
+      ]
+    },
+    {
+      "name": "sp_sys_login",
+      "type": "sp",
+      "schema": "public",
+      "permission": [
+        "BASIC"
+      ],
+      "authentication": true,
+      "authorization": true,
+      "rest": false,
+      "logger": false,
+      "call": false,
+      "parameters": [
+        "p_user_name",
+        "p_user_password"
+      ]
+    },
+    {
+      "name": "sp_sys_login_with_email",
+      "type": "sp",
+      "permission": [
+        "BASIC"
+      ],
+      "authentication": false,
+      "authorization": false,
+      "rest": false,
+      "logger": false,
+      "call": false,
+      "parameters": [
+        "p_email",
+        "p_user_password"
+      ]
+    },
+    {
+      "name": "sp_das_create_roi",
+      "type": "sp",
+      "permission": [
+        "ROI_MANAGEMENT"
+      ],
+      "authentication": true,
+      "authorization": true,
+      "rest": true,
+      "logger": true,
+      "call": false,
+      "parameters": [
+        "p_user_idx",
+        "p_roi_title",
+        "p_roi"
+      ]
+    },
+    {
+      "name": "sp_das_favorite_roi_list",
+      "type": "sp",
+      "permission": [
+        "ROI_MANAGEMENT"
+      ],
+      "authentication": true,
+      "authorization": true,
+      "rest": true,
+      "logger": true,
+      "call": false,
+      "parameters": [
+        "p_user_idx"
+      ]
+    },
+    {
+      "name": "sp_das_find_roi",
+      "type": "sp",
+      "permission": [
+        "ROI_MANAGEMENT"
+      ],
+      "authentication": true,
+      "authorization": true,
+      "rest": true,
+      "logger": true,
+      "call": true,
+      "call_output_name": "sp_kas_roi",
+      "parameters": [
+        "p_user_idx"
+      ]
+    }
+  ]
+}
